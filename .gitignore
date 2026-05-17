@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets & env files
+.env
+.env.*
+*.env
+
+# Internal docs / notes
+learnings.txt
+session_logs/
+SUBMISSION_GAP_ANALYSIS.md
+
+# Claude Code settings
+.claude/
+
+# Pytest cache
+.pytest_cache/
+
+# Data files (large — rebuilt via scripts/download_onsides.py)
+data/onsides.db
+data/cairn.db
+data/*.sqlite
+data/medqa_test/
+data/triage_sft/
+data/triage_dpo/
+!data/finetune_ready/
+!data/.gitkeep
+
+# Model files (large — downloaded from HuggingFace)
+models/gguf/*.gguf
+models/gguf/.cache/
+models/cairn-e4b-triage-lora/
+*.bin
+*.pt
+*.safetensors
+
+# References (cloned repos — large, not ours)
+references/
+
+# Space deployment (separate HF repo)
+space/
+
+# Notebook checkpoints and outputs
+notebooks/cairn-checkpoints/
+notebooks/*.png
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

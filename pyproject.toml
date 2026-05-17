@@ -1,0 +1,73 @@
+[project]
+name = "cairn"
+version = "0.1.0"
+description = "Cairn: Offline Multimodal Medical Triage Agent powered by Gemma 4"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [{ name = "Rahul Kumar" }]
+dependencies = [
+    # Agent framework
+    "langgraph>=0.4",
+    "langchain>=0.3",
+    "langchain-ollama>=0.3",
+
+    # LLM serving
+    "ollama>=0.4",
+
+    # Medical safety
+    "fhir.resources>=7.0",
+
+    # Device integration
+    "bleak>=0.22",
+
+    # Offline sync
+    "couchdb>=1.2",
+    "aiohttp>=3.9",
+
+    # Audio processing
+    "openai-whisper>=20240930",
+
+    # Data & utilities
+    "pydantic>=2.0",
+    "rich>=13.0",
+    "typer>=0.12",
+    "httpx>=0.27",
+    "pillow>=10.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+train = [
+    "unsloth",
+    "datasets>=3.0",
+    "transformers>=4.45",
+    "trl>=0.12",
+    "peft>=0.13",
+]
+
+[project.scripts]
+cairn = "cairn.cli:app"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
